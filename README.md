@@ -17,7 +17,7 @@
 
 | 参照名 | 使用箇所 | 取得方法 | ステータス |
 | :--- | :--- | :--- | :--- |
-| aws_access_key_id | api / github / actions / secretes と、.env.development |  |　取得済 |
+| aws_access_key_id | api / github / actions / secretes と、.env.development |  | 取得済 |
 | aws_secret_access_key | api / github / actions / secretes |  | 取得済 |
 | aws_region | api / github / actions / secretes と、.env.development |  | 取得済 |
 | firebase projectId | api / github / actions / secretes と、.env.development |  | 取得済 |
