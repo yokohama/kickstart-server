@@ -17,10 +17,10 @@
 
 | 参照名 | 使用箇所 | 取得方法 | ステータス |
 | :--- | :--- | :--- | :--- |
-| aws_access_key_id | api / github / actions / secretes と、.env.development |  | |
-| aws_secret_access_key | api / github / actions / secretes |  | |
-| aws_region | api / github / actions / secretes と、.env.development |  | |
-| firebase projectId | api / github / actions / secretes と、.env.development |  | |
+| aws_access_key_id | api / github / actions / secretes と、.env.development |  |　取得済 |
+| aws_secret_access_key | api / github / actions / secretes |  | 取得済 |
+| aws_region | api / github / actions / secretes と、.env.development |  | 取得済 |
+| firebase projectId | api / github / actions / secretes と、.env.development |  | 取得済 |
 
 ## 2. リポジトリをforkする
 ### 1. githubからforkする。fork先名は解りやすく同じ名前にして下さい。もし変更する場合は、以降`kickstart-server`を`変更した名前`に読み替えて作業をおこなって下さい。
