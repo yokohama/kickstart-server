@@ -9,7 +9,7 @@ if [ "${LOG_GROUP_ENV}" = "" ]; then
   LOG_GROUP_ENV=local
 fi
 
-LOG_PREFIX=NextStartupStack-${LOG_GROUP_ENV}-TaskDefinitionContainerLogGroup
+LOG_PREFIX=KickstartStack-${LOG_GROUP_ENV}-TaskDefinitionContainerLogGroup
 
 LOG_GROUP_NAME=`aws logs describe-log-groups --query 'logGroups[*].logGroupName' | 
   jq -r '.[]' | 

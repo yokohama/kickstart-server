@@ -23,11 +23,11 @@ if [ "${AWS_REGION}" = "" ] || [ "${AWS_ACCOUNT_ID}" = "" ]; then
   exit 1
 fi
 
-IMAGE_ID=`docker images | grep next-startup | awk '{print $3}'`
+IMAGE_ID=`docker images | grep kickstart | awk '{print $3}'`
 if [ "${IMAGE_ID}" = "" ]; then
   echo '[Error]'
   echo '- docker image not found.'
-  echo '- Please check docker images. Does next-startup image exist?'
+  echo '- Please check docker images. Does kickstart image exist?'
   exit 1
 fi
 

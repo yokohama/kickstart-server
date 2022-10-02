@@ -7,7 +7,7 @@ services:
     volumes:
       - postgres_volume:/var/lib/postgresql/data
   api:
-    image: next-startup
+    image: kickstart-server
     build:
       context: .
       dockerfile: Dockerfile
