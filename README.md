@@ -64,7 +64,7 @@ $ TARGET_ENV=prod ./ops/ecr_push.sh
 ```
 
 ## 7. CDKに戻りインフラを構築する
-- これでimageがアップされたので、[こちら]から(https://github.com/yokohama/kickstart-cdk#kickstart-cdk-8)引き続きインフラ構築を進めることが出来ます。
+- これでimageがアップされたので、[こちら](https://github.com/yokohama/kickstart-cdk#kickstart-cdk-8)から引き続きインフラ構築を進めることが出来ます。
 - 8に進む前に、上記のリンクよりインフラの構築を完了させて下さい。
 
 ## 8. 変更のデプロイ
