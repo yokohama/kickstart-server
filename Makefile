@@ -61,6 +61,13 @@ test:
   username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   database: <%= ENV['DATABASE_NAME_TEST'] %>
+
+production:
+  <<: *default
+  host: <%= ENV['DATABASE_HOST'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  database: <%= ENV['DATABASE_NAME_PRODUCTION'] %>
 endef
 export _database_yml
 
@@ -72,6 +79,7 @@ DATABASE_USER=postgres
 DATABASE_PASSWORD=password
 DATABASE_NAME=local_db
 DATABASE_NAME_TEST=test_db
+DATABASE_NAME_PRODUCTION=prod_db
 
 AWS_REGION=
 AWS_ACCOUNT_ID=

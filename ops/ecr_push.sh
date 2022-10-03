@@ -19,7 +19,7 @@ AWS_ACCOUNT_ID=`cat .env.development | grep AWS_ACCOUNT_ID | awk -F'[=]' '{print
 if [ "${AWS_REGION}" = "" ] || [ "${AWS_ACCOUNT_ID}" = "" ]; then
   echo '[Error]'
   echo '- aws_resion or asw_account_id settings not found.'
-  echo '- Please check your .evn file.'
+  echo '- Please check your .evn.development file.'
   exit 1
 fi
 

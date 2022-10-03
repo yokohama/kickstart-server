@@ -36,16 +36,16 @@ $ make new
 - .env.developmentの各変数に、1で取得した情報を記入します。
 ```
 RAILS_LOG_TO_STDOUT=true                                                           
-                                                                                   
+
 DATABASE_HOST=db                                                                   
 DATABASE_USER=postgres                                                             
 DATABASE_PASSWORD=password                                                         
 DATABASE_NAME=local_db                                                             
 DATABASE_NAME_TEST=test_db                                                         
-                                                                                                                                                                                              
+
 AWS_REGION=＜1で取得した情報＞                                                         
 AWS_ACCOUNT_ID=＜1で取得した情報＞                                                        
-                                                                                   
+
 FIREBASE_PROJECT_ID=＜1で取得した情報＞
 ```
 
@@ -68,4 +68,5 @@ $ TARGET_ENV=prod ./ops/ecr_push.sh
 - 8に進む前に、上記のリンクよりインフラの構築を完了させて下さい。
 
 ## 8. 変更のデプロイ
+
 
