@@ -38,7 +38,7 @@ runs:
       shell: bash
       run: |
         IMAGE_TAG=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
-        DOCKER_BUILDKIT=1 docker build -t ${{ steps.logn-ecr.outputs.registry }}:latest .
+        DOCKER_BUILDKIT=1 docker build -t ${{ steps.login-ecr.outputs.registry }}:latest .
         docker push ${{ inputs.aws_repo_name }}:latest
         #DOCKER_BUILDKIT=1 docker build -t $ECR_REPOSITORY:latest .
         #docker push $ECR_REPOSITORY:latest
