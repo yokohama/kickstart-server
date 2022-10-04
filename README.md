@@ -75,8 +75,8 @@ $ TARGET_ENV=prod ./ops/ecr_push.sh
 ### 2. 以下の変数名と値をセットします。
 | 変数名 | 参照名 |
 | :--- | :--- |
-| AWS_ACCESS_KEY_ID |　aws_access_key_id　|
-| AWS_SECRET_ACCESS_KEY |　aws_secret_access_key |
+| AWS_ACCESS_KEY_ID | aws_access_key_id |
+| AWS_SECRET_ACCESS_KEY | aws_secret_access_key |
 | AWS_REGION | aws_region  |
 
 <img src="https://user-images.githubusercontent.com/1023421/193738601-26371df1-7baa-4376-800e-8977d4fb8b82.png" width="400" />
