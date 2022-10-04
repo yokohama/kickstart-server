@@ -37,10 +37,7 @@ runs:
         ECR_REPOSITORY: ${{ inputs.aws_repo_name }}
       shell: bash
       run: |
-        echo '####'
-        echo ${{ github.ref }}
-        echo '####'
-        IMAGE_TAG=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
+        IMAGE_TAG=latest
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker images
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
