@@ -81,8 +81,3 @@ $ TARGET_ENV=prod ./ops/ecr_push.sh
 
 <img src="https://user-images.githubusercontent.com/1023421/193738601-26371df1-7baa-4376-800e-8977d4fb8b82.png" width="400" />
 
-
-
-
-
-
