@@ -38,7 +38,7 @@ runs:
       shell: bash
       run: |
         IMAGE_TAG=latest
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        DOCKER_BUILDKIT=1 docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker images
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         #IMAGE_TAG=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
