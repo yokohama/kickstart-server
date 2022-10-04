@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - development
+    paths-ignore:
+      - README.md
+      - .gitignore
 
 jobs:
   Deploy-ECR:
