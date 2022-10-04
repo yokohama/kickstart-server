@@ -68,3 +68,21 @@ $ TARGET_ENV=prod ./ops/ecr_push.sh
 - 8に進む前に、上記のリンクよりインフラの構築を完了させて下さい。
 
 ## 8. 変更のデプロイ
+### 1. GitHub Actionsにシークレットをセット
+
+<img src="https://user-images.githubusercontent.com/1023421/193737973-d14919b0-a00f-484c-9709-87bb569bd264.png" width="400" />
+
+### 2. 以下の変数名と値をセットします。
+| 変数名 | 参照名 |
+| :--- | :--- |
+| AWS_ACCESS_KEY_ID |　aws_access_key_id　|
+| AWS_SECRET_ACCESS_KEY |　aws_secret_access_key |
+| AWS_REGION | aws_region  |
+
+<img src="https://user-images.githubusercontent.com/1023421/193738601-26371df1-7baa-4376-800e-8977d4fb8b82.png" width="400" />
+
+
+
+
+
+
