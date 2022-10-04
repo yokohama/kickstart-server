@@ -37,16 +37,8 @@ runs:
         ECR_REPOSITORY: ${{ inputs.aws_repo_name }}
       shell: bash
       run: |
-        IMAGE_TAG=latest
-        DOCKER_BUILDKIT=1 docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker images
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        #IMAGE_TAG=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
-        #DOCKER_BUILDKIT=1 docker build -t $ECR_REPOSITORY:latest .
-        #docker push $ECR_REPOSITORY:latest
-
-        #DOCKER_BUILDKIT=1 docker build . -t ${{ inputs.aws_repo_name }}:latest
-        #docker push ${{ inputs.aws_repo_name }}:latest
+        DOCKER_BUILDKIT=1 docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
     - name: Update fargate service
       shell: bash
