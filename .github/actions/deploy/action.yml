@@ -1,4 +1,7 @@
 inputs:
+  env:
+    description: ''
+    required: true
   aws_access_key_id:
     description: ''
     required: true
@@ -8,9 +11,9 @@ inputs:
   aws_region:
     description: ''
     required: true
-  aws_repo_name:
-    description: ''
-    required: true
+  #aws_repo_name:
+  #  description: ''
+  #  required: true
 
 runs:
   using: "composite"
@@ -29,11 +32,18 @@ runs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Build, tag, and push image to Amazon ECR
-      env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: ${{ inputs.aws_repo_name }}
+      #env:
+      #  ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+      #  ECR_REPOSITORY: ${{ inputs.aws_repo_name }}
       shell: bash
       run: |
         IMAGE_TAG=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
-        DOCKER_BUILDKIT=1 docker build -t $ECR_REPOSITORY:latest .
-        docker push $ECR_REPOSITORY:latest
+        DOCKER_BUILDKIT=1 docker build -t ${{ steps.logn-ecr.outputs.registry }}:latest .
+        docker push ${{ inputs.aws_repo_name }}:latest
+        #DOCKER_BUILDKIT=1 docker build -t $ECR_REPOSITORY:latest .
+        #docker push $ECR_REPOSITORY:latest
+
+    - name: Update fargate service
+      shell: bash
+      run: |
+        TARGET_ENV=${{ inputs.env }} ./ops/update_ecr_service.sh
