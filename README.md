@@ -9,7 +9,7 @@
 6. imageをECR( local / dev / prod )にアップロード
 7. CDKでインフラを構築をする
 8. シークレットをセット
-9. aws上のlocalにdb:migrate
+9. 初回のdb:migrate
 10. aws上のdev prodに変更のデプロイ
 
 ## 1. 前提
