@@ -25,8 +25,8 @@
 | firebase projectId | api / github / actions / secretes と、.env.development |  | 取得済 |
 
 ## 2. リポジトリをforkする
-### 1. githubからforkする。fork先名は解りやすく同じ名前にして下さい。もし変更する場合は、以降`kickstart-server`を`変更した名前`に読み替えて作業をおこなって下さい。
-### 2. forkした先のリポジトリに、`development`ブランチを作成して下さい。
+- githubからforkする。fork先名は解りやすく同じ名前にして下さい。もし変更する場合は、以降`kickstart-server`を`変更した名前`に読み替えて作業をおこなって下さい。
+- forkした先のリポジトリに、`development`ブランチを作成して下さい。
 
 ## 3. プロジェクトの作成
 ```
