@@ -136,7 +136,13 @@ $ git push origin development
 $ ./ops/rails-log.sh dev
 ```
 
+### 6. production環境にデプロイする
 
+### 7. GitHub Action上でデプロイの進捗確認
 
+<img src="https://user-images.githubusercontent.com/1023421/193828653-7d3ca48b-e696-43bf-badf-5e39f034f9fa.png" width="400" />
 
+### 8. ローカルでfargate上（prod）のログを確認
+```
+$ ./ops/rails-log.sh prod
 ```
