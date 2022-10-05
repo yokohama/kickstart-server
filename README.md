@@ -9,6 +9,8 @@
 6. imageをECR( local / dev / prod )にアップロード
 7. CDKでインフラを構築をする
 8. 変更のデプロイ
+9. aws上のlocalにdb:migrate
+10. aws上のdev prodに変更のデプロイ
 
 ## 1. 前提
 - [こちら](https://github.com/yokohama/kickstart#kickstart-1)で、awsの以下の情報が取得されている必要が有ります。
@@ -69,7 +71,7 @@ $ TARGET_ENV=prod ./ops/ecr_push.sh
 - [kickstart-cdk](https://github.com/yokohama/kickstart-cdk#kickstart-cdk-8)から来た方は、これでimageがアップされたので、[こちら](https://github.com/yokohama/kickstart-cdk#kickstart-cdk-8)に戻り、引き続きインフラ構築を進めることが出来ます。
 - このチュートリアルから開始した方は、8に進む前に[kickstart-cdk](https://github.com/yokohama/kickstart-cdk)からインフラの構築を進めて、指示に従い戻ってきて下さい。
 
-## 8. 変更のデプロイ
+## 8. シークレットをセット
 ### 1. GitHub Actionsにシークレットをセット
 
 <img src="https://user-images.githubusercontent.com/1023421/193737973-d14919b0-a00f-484c-9709-87bb569bd264.png" width="400" />
@@ -83,7 +85,17 @@ $ TARGET_ENV=prod ./ops/ecr_push.sh
 
 <img src="https://user-images.githubusercontent.com/1023421/193738601-26371df1-7baa-4376-800e-8977d4fb8b82.png" width="400" />
 
-## 8. 変更のデプロイ
+## 9. aws上のlocalにdb:migrate
+- aws上のlocalは、kickstart-server(Rails)というよりかCDKの実験場の様なものなので、GitHub Actionsに乗ったデプロイはしません。
+- localにRailsをデプロイしたい場合は、手動で上記[kickstart-server-6](#kickstart-server-6)の、`TARGET_ENV=local`のコマンドを実行した後に、以下のコマンドで`db:migrate`を実行します。
+- 
+```
+$ cd ./kickstart-server
+$ TARGET_ENV=local ./ops/rails_db_migrate.sh
+```
+
+## 10. aws上のdev prodに変更のデプロイ
+- こちらは、上記のlocalと違い、GitHub Actionsでデプロイされます。
 
 ### 1. ローカルのコンテナを起ち上げます。
 ```
