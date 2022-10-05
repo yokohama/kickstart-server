@@ -40,7 +40,7 @@ docker container ls -a
 # まだ運用がわからないのでコメント
 # aws cloud watch log groups削除
 #LOG_GROUPS=($(aws logs describe-log-groups | jq -r '.logGroups[].logGroupName' | grep "\-${TARGET_ENV}"))
-#for i in ${delete_files[@]}; do
+#for i in ${LOG_GROUPS[@]}; do
 #  aws logs delete-log-group --log-group-name $i
 #done
 
@@ -49,6 +49,10 @@ docker container ls -a
 #
 make new
 
-TARGET_ENV=local ops/ecr_push.sh
-TARGET_ENV=local ops/update_ecr_service.sh
-TARGET_ENV=local ops/rails_db_migrate.sh
+envs=(local dev prod)
+for i in ${envs[@]}; do
+  TARGET_ENV=$i ops/ecr_push.sh
+  TARGET_ENV=$i ops/update_ecr_service.sh
+  TARGET_ENV=$i ops/rails_task.sh db:migrate:reset
+  TARGET_ENV=$i ops/rails_task.sh db:migrate
+done

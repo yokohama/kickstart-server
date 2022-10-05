@@ -27,6 +27,6 @@ class ApplicationController < ActionController::API
 
      error = InvalidTokenError.new('authorization error.')
 
-     render json: error, status: :unauthorized
+     render json: { message: error }, status: :unauthorized
   end
 end

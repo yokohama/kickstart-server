@@ -48,4 +48,4 @@ runs:
     - name: rails db:migrate
       shell: bash
       run: |
-        TARGET_ENV=${{ inputs.env }} ./ops/rails_db_migrate.sh
+        TARGET_ENV=${{ inputs.env }} ./ops/rails_task.sh db:migrate

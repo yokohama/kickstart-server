@@ -3,7 +3,15 @@
 if [ "${TARGET_ENV}" = "" ]; then
   echo '[Error]'
   echo '- TARGET_ENV param required. [ local | dev | prod ]'
-  echo '- ex) TARGET_ENV=local ./init/ecr_init_push.sh'
+  echo '- ex) TARGET_ENV=local ./init/rails_task.sh db:migrate'
+  exit 1
+fi
+
+COMMAND=$@
+if [ "${COMMAND}" = "" ]; then
+  echo '[Error]'
+  echo '- command was null'
+  echo '- ex) TARGET_ENV=local ./init/rails_task.sh db:migrate'
   exit 1
 fi
 
@@ -39,7 +47,7 @@ CONTAINER_NAME=$(aws ecs describe-task-definition \
     "containerOverrides": [
       {
         "name": "${CONTAINER_NAME}",
-        "command": ["rails", "db:migrate"]
+        "command": ["rails", "${COMMAND}"]
       }
     ]
   }
