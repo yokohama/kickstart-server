@@ -81,3 +81,43 @@ $ TARGET_ENV=prod ./ops/ecr_push.sh
 
 <img src="https://user-images.githubusercontent.com/1023421/193738601-26371df1-7baa-4376-800e-8977d4fb8b82.png" width="400" />
 
+## 8. 変更のデプロイ
+
+### 1. ローカルのコンテナを起ち上げます。
+```
+$ cd ./kickstart-server
+$ cd docker compose up
+```
+
+### 2. productリソースを作成する
+```
+$ docker compose run --rm api rails g scaffold product
+$ docker compose run --rm api rails db:migrate
+```
+
+### 3. development環境にデプロイする
+```
+$ git add .
+$ git commit -m 'デプロイテスト'
+$ git push origin development
+```
+
+### 4. GitHub Action上でデプロイの進捗確認
+
+<img src="https://user-images.githubusercontent.com/1023421/193828653-7d3ca48b-e696-43bf-badf-5e39f034f9fa.png" width="400" />
+
+### 5. ローカルでfargate上（dev）のログを確認
+```
+$ ./ops/rails-log.sh dev
+```
+
+
+
+
+```
+
+
+
+
+
+
