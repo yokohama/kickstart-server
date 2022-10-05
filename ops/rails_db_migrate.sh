@@ -48,9 +48,7 @@ EOF
 NETWORK_CONFIG=$(aws ecs describe-services \
   --cluster ${CLUSTER_ARN} \
   --services ${SERVICE_ARN} \
-  | jq '.services[].deployments[].networkConfiguration')
-#aws ecs describe-services --cluster ${CLUSTER_ARN} --services ${SERVICE_ARN}
-
+  | jq '.services[].deployments[0].networkConfiguration')
 
 aws ecs run-task \
 --cluster "${CLUSTER_ARN}" \
