@@ -55,6 +55,8 @@ $ docker comopse up
 ```
 - これで、localhost:3000にアクセスして動作していることを確認して下さい。
 
+<a id="kickstart-server-6" />
+
 ## 6. imageをECR( local / dev / prod )にアップロード
 ```
 $ cd ./kickstart-server
