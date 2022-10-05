@@ -138,7 +138,7 @@ $ ./ops/rails-log.sh dev
 
 ### 6. production環境にデプロイする
 
-[kickstart-cdk-8](https://github.com/yokohama/kickstart-cdk#kickstart-cdk-8)を参考にして下さい。
+[kickstart-ckd-10-8](https://github.com/yokohama/kickstart-cdk#kickstart-ckd-10-8)を参考にして下さい。
 
 ### 7. GitHub Action上でデプロイの進捗確認
 
