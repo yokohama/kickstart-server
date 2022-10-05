@@ -9,7 +9,7 @@
 if [ "${TARGET_ENV}" = "" ]; then
   echo '[Error]'
   echo '- TARGET_ENV param required. [ local | dev | prod ]'
-  echo '- ex) TARGET_ENV=local ./init/ecr_init_push.sh'
+  echo '- ex) TARGET_ENV=local ./ops/ecr_init_push.sh'
   exit 1
 fi
 REPO_NAME=ecr-${TARGET_ENV}

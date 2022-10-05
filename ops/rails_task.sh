@@ -3,7 +3,7 @@
 if [ "${TARGET_ENV}" = "" ]; then
   echo '[Error]'
   echo '- TARGET_ENV param required. [ local | dev | prod ]'
-  echo '- ex) TARGET_ENV=local ./init/rails_task.sh db:migrate'
+  echo '- ex) TARGET_ENV=local ./ops/rails_task.sh db:migrate'
   exit 1
 fi
 
@@ -11,7 +11,7 @@ COMMAND=$@
 if [ "${COMMAND}" = "" ]; then
   echo '[Error]'
   echo '- command was null'
-  echo '- ex) TARGET_ENV=local ./init/rails_task.sh db:migrate'
+  echo '- ex) TARGET_ENV=local ./ops/rails_task.sh db:migrate'
   exit 1
 fi
 
