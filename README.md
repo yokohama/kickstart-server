@@ -85,13 +85,17 @@ $ TARGET_ENV=prod ./ops/ecr_push.sh
 
 <img src="https://user-images.githubusercontent.com/1023421/193738601-26371df1-7baa-4376-800e-8977d4fb8b82.png" width="400" />
 
-## 9. aws上のlocalにdb:migrate
-- aws上のlocalは、kickstart-server(Rails)というよりかCDKの実験場の様なものなので、GitHub Actionsに乗ったデプロイはしません。
-- localにRailsをデプロイしたい場合は、手動で上記[kickstart-server-6](#kickstart-server-6)の、`TARGET_ENV=local`のコマンドを実行した後に、以下のコマンドで`db:migrate`を実行します。
+## 9. 初回のdb:migrate
+- 初回はaws上の、`local`、`dev`、`prod`全ての環境に対して、`db:migrate`を実行します。
+- 2度目以降は、`dev`、`prod`の`db:migrate`は、各ブランチへのマージの際にGitHub Actionsにより自動で行われます。
+- `local`は、kickstart-server(Rails)というよりかCDKの実験場の様なものなので、GitHub Actionsに乗ったデプロイはしません。
+- Railsで開発したimageをaws上の`local`にRailsをデプロイしたい場合は、手動で上記[kickstart-server-6](#kickstart-server-6)の、`TARGET_ENV=local`のコマンドを実行した後に、以下のコマンドで`db:migrate`を実行します。
 - 
 ```
 $ cd ./kickstart-server
 $ TARGET_ENV=local ./ops/rails_db_migrate.sh
+$ TARGET_ENV=dev ./ops/rails_db_migrate.sh
+$ TARGET_ENV=prod ./ops/rails_db_migrate.sh
 ```
 
 ## 10. aws上のdev prodに変更のデプロイ
