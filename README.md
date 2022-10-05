@@ -7,7 +7,7 @@
 4. .env.developmentの準備
 5. 動作確認
 6. imageをECR( local / dev / prod )にアップロード
-7. CDKに戻りインフラを構築する
+7. CDKでインフラを構築をする
 8. 変更のデプロイ
 
 ## 1. 前提
@@ -55,6 +55,8 @@ $ docker comopse up
 ```
 - これで、localhost:3000にアクセスして動作していることを確認して下さい。
 
+<a id="kickstart-server-6" />
+
 ## 6. imageをECR( local / dev / prod )にアップロード
 ```
 $ cd ./kickstart-server
@@ -63,9 +65,9 @@ $ TARGET_ENV=dev ./ops/ecr_push.sh
 $ TARGET_ENV=prod ./ops/ecr_push.sh
 ```
 
-## 7. CDKに戻りインフラを構築する
-- これでimageがアップされたので、[こちら](https://github.com/yokohama/kickstart-cdk#kickstart-cdk-8)から引き続きインフラ構築を進めることが出来ます。
-- 8に進む前に、上記のリンクよりインフラの構築を完了させて下さい。
+## 7. CDKでインフラを構築をする
+- [kickstart-cdk](https://github.com/yokohama/kickstart-cdk#kickstart-cdk-8)から来た方は、これでimageがアップされたので、[こちら](https://github.com/yokohama/kickstart-cdk#kickstart-cdk-8)に戻り、引き続きインフラ構築を進めることが出来ます。
+- このチュートリアルから開始した方は、8に進む前に[kickstart-cdk](https://github.com/yokohama/kickstart-cdk)からインフラの構築を進めて、指示に従い戻ってきて下さい。
 
 ## 8. 変更のデプロイ
 ### 1. GitHub Actionsにシークレットをセット
@@ -80,4 +82,39 @@ $ TARGET_ENV=prod ./ops/ecr_push.sh
 | AWS_REGION | aws_region  |
 
 <img src="https://user-images.githubusercontent.com/1023421/193738601-26371df1-7baa-4376-800e-8977d4fb8b82.png" width="400" />
+
+## 8. 変更のデプロイ
+
+### 1. ローカルのコンテナを起ち上げます。
+```
+$ cd ./kickstart-server
+$ cd docker compose up
+```
+
+### 2. productリソースを作成する
+```
+$ docker compose run --rm api rails g scaffold product
+$ docker compose run --rm api rails db:migrate
+```
+
+### 3. development環境にデプロイする
+```
+$ git add .
+$ git commit -m 'デプロイテスト'
+$ git push origin development
+```
+
+### 4. GitHub Action上でデプロイの進捗確認
+
+<img src="https://user-images.githubusercontent.com/1023421/193828653-7d3ca48b-e696-43bf-badf-5e39f034f9fa.png" width="400" />
+
+### 5. ローカルでfargate上（dev）のログを確認
+```
+$ ./ops/rails-log.sh dev
+```
+
+
+
+
+```
 
